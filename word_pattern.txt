@@ -1,0 +1,26 @@
+public class Solution {
+    public boolean wordPattern(String pattern, String str) {
+        String[] words = str.split(" ");
+        if(words.length!=pattern.length())
+            return false;
+        if(pattern.length()==0 && words.length==0)
+            return true;
+        HashMap<Character,String> map = new HashMap<>();
+        map.put(pattern.charAt(0),words[0]);
+        for(int i=1;i<pattern.length();i++){
+            char p = pattern.charAt(i);
+            if(map.containsKey(p)){
+                if(!words[i].equals(map.get(p)))
+                    return false;
+            }
+            else if(map.containsValue(words[i])){
+                if(map.get(p)==null || !map.get(p).equals(words[i]))
+                    return false;
+            }
+            else{
+                map.put(p,words[i]);
+            }
+        }
+        return true;
+    }
+}
