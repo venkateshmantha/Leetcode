@@ -2,7 +2,7 @@ class Solution {
     public boolean PredictTheWinner(int[] nums) {
         if (nums == null) { return true; }
         int n = nums.length;
-        if ((n & 1) == 0) { return true; } // Improved with hot13399's comment.
+        if ((n & 1) == 0) { return true; }
         int[] dp = new int[n];
         for (int i = n - 1; i >= 0; i--) {
             for (int j = i; j < n; j++) {
